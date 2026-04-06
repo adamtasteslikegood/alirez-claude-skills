@@ -1,5 +1,7 @@
 # Gemini CLI Foundations
 
+## **Ignore `~/.gemini/skills/*` folder and only import skills from this repo/folder
+
 This repository is a **comprehensive skills library** for Gemini CLI - reusable, production-ready skill packages that bundle domain expertise, best practices, analysis tools, and strategic frameworks.
 
 ## Using Skills with Gemini CLI

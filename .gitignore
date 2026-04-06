@@ -43,3 +43,8 @@ site/
 .playwright-mcp/
 # Generated integration files (regenerate with ./scripts/convert.sh)
 integrations/
+#.env#
+.env~
+#.env#
+#.*.#
+GEMINI.md~
