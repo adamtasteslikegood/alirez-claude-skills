@@ -1,13 +1,13 @@
 ---
 title: "Engineering - POWERFUL Skills — Agent Skills & Codex Plugins"
-description: "43 engineering - powerful skills — advanced agent-native skill and Claude Code plugin for AI agent design, infrastructure, and automation. Works with Claude Code, Codex CLI, Gemini CLI, and OpenClaw."
+description: "48 engineering - powerful skills — advanced agent-native skill and Claude Code plugin for AI agent design, infrastructure, and automation. Works with Claude Code, Codex CLI, Gemini CLI, and OpenClaw."
 ---
 
 <div class="domain-header" markdown>
 
 # :material-rocket-launch: Engineering - POWERFUL
 
-<p class="domain-count">43 skills in this domain</p>
+<p class="domain-count">48 skills in this domain</p>
 
 </div>
 
@@ -52,6 +52,12 @@ description: "43 engineering - powerful skills — advanced agent-native skill a
     ---
 
     > You sleep. The agent experiments. You wake up to results.
+
+-   **[Browser Automation - POWERFUL](browser-automation.md)**
+
+    ---
+
+    The Browser Automation skill provides comprehensive tools and knowledge for building production-grade web automation ...
 
 -   **[Changelog Generator](changelog-generator.md)**
 
@@ -106,6 +112,12 @@ description: "43 engineering - powerful skills — advanced agent-native skill a
     ---
 
     Tier: POWERFUL
+
+-   **[Focused Fix — Deep-Dive Feature Repair](focused-fix.md)**
+
+    ---
+
+    Activate when the user asks to fix, debug, or make a specific feature/module/area work. Key triggers:
 
 -   **[Git Worktree Manager](git-worktree-manager.md)**
 
@@ -179,6 +191,12 @@ description: "43 engineering - powerful skills — advanced agent-native skill a
 
     Tier: POWERFUL
 
+-   **[Secrets Vault Manager](secrets-vault-manager.md)**
+
+    ---
+
+    Tier: POWERFUL
+
 -   **[Skill Security Auditor](skill-security-auditor.md)**
 
     ---
@@ -190,6 +208,18 @@ description: "43 engineering - powerful skills — advanced agent-native skill a
     ---
 
     ---
+
+-   **[Spec-Driven Workflow — POWERFUL](spec-driven-workflow.md)**
+
+    ---
+
+    Spec-driven workflow enforces a single, non-negotiable rule: write the specification BEFORE you write any code. Not a...
+
+-   **[SQL Database Assistant - POWERFUL Tier Skill](sql-database-assistant.md)**
+
+    ---
+
+    The operational companion to database design. While database-designer focuses on schema architecture and database-sch...
 
 -   **[Tech Debt Tracker](tech-debt-tracker.md)**
 
