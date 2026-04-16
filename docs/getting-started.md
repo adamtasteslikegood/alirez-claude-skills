@@ -1,6 +1,6 @@
 ---
 title: Install Agent Skills — Codex, Gemini CLI, OpenClaw Setup
-description: "How to install Claude Code skills and agent plugins for 11 AI coding tools. Step-by-step setup for Claude Code, OpenAI Codex, Gemini CLI, OpenClaw, Cursor, Aider, Windsurf, and more."
+description: "How to install 235 Claude Code skills and agent plugins for 12 AI coding tools. Step-by-step setup for Claude Code, OpenAI Codex, Gemini CLI, OpenClaw, Cursor, Aider, Windsurf, and more."
 ---
 
 # Getting Started
@@ -55,6 +55,26 @@ Choose your platform and follow the steps:
 
     ```bash
     bash <(curl -s https://raw.githubusercontent.com/alirezarezvani/claude-skills/main/scripts/openclaw-install.sh)
+    ```
+
+=== "Hermes Agent"
+
+    [Hermes Agent](https://github.com/NousResearch/hermes-agent) uses the same agentskills.io SKILL.md standard — no format conversion needed.
+
+    ```bash
+    git clone https://github.com/alirezarezvani/claude-skills.git
+    cd claude-skills
+    python scripts/sync-hermes-skills.py --verbose
+    ```
+
+    Skills install to `~/.hermes/skills/claude-skills/` and are automatically discovered by Hermes via `/skills` or `/<skill-name>`.
+
+    Sync options:
+
+    ```bash
+    python scripts/sync-hermes-skills.py --domain engineering  # one domain only
+    python scripts/sync-hermes-skills.py --copy                # copy instead of symlink
+    python scripts/sync-hermes-skills.py --dry-run             # preview
     ```
 
 === "Cursor"
@@ -140,15 +160,15 @@ Choose your platform and follow the steps:
 
 | Bundle | Install Command | Skills |
 |--------|----------------|--------|
-| **Engineering Core** | `/plugin install engineering-skills@claude-code-skills` | 30 |
-| **Engineering POWERFUL** | `/plugin install engineering-advanced-skills@claude-code-skills` | 35 |
-| **Product** | `/plugin install product-skills@claude-code-skills` | 14 |
-| **Marketing** | `/plugin install marketing-skills@claude-code-skills` | 43 |
-| **Regulatory & Quality** | `/plugin install ra-qm-skills@claude-code-skills` | 13 |
-| **Project Management** | `/plugin install pm-skills@claude-code-skills` | 6 |
-| **C-Level Advisory** | `/plugin install c-level-skills@claude-code-skills` | 28 |
-| **Business & Growth** | `/plugin install business-growth-skills@claude-code-skills` | 4 |
-| **Finance** | `/plugin install finance-skills@claude-code-skills` | 2 |
+| **Engineering Core** | `/plugin install engineering-skills@claude-code-skills` | 37 |
+| **Engineering POWERFUL** | `/plugin install engineering-advanced-skills@claude-code-skills` | 43 |
+| **Product** | `/plugin install product-skills@claude-code-skills` | 15 |
+| **Marketing** | `/plugin install marketing-skills@claude-code-skills` | 44 |
+| **Regulatory & Quality** | `/plugin install ra-qm-skills@claude-code-skills` | 14 |
+| **Project Management** | `/plugin install pm-skills@claude-code-skills` | 9 |
+| **C-Level Advisory** | `/plugin install c-level-skills@claude-code-skills` | 34 |
+| **Business & Growth** | `/plugin install business-growth-skills@claude-code-skills` | 5 |
+| **Finance** | `/plugin install finance-skills@claude-code-skills` | 4 |
 
 Or install individual skills: `/plugin install skill-name@claude-code-skills`
 
@@ -182,7 +202,7 @@ AI-augmented development. Optimize for SEO.
 
 ## Python Tools
 
-All 254 tools use the standard library only — zero pip installs, all verified.
+All 314 tools use the standard library only — zero pip installs, all verified.
 
 ```bash
 # Security audit a skill before installing
@@ -247,14 +267,14 @@ See the [Skills & Agents Factory](https://github.com/alirezarezvani/claude-code-
 ??? question "How do I update installed skills?"
     Re-run the install command. The plugin system fetches the latest version from the marketplace.
 
-??? question "Will upgrading to v2.1.2 break my setup?"
-    No. v2.1.2 is fully backward compatible. Existing SKILL.md files, scripts, and references are unchanged. New features (TSX output, brand voice integration) are opt-in additions.
+??? question "Will upgrading to v2.2.0 break my setup?"
+    No. v2.2.0 is fully backward compatible. Existing SKILL.md files, scripts, and references are unchanged. New skills (security suite, self-eval) are additive only.
 
 ??? question "Does this work with Gemini CLI?"
     Yes. Run `./scripts/gemini-install.sh` to set up skills for Gemini CLI. A sync script (`scripts/sync-gemini-skills.py`) generates the skills index automatically.
 
 ??? question "Does this work with Cursor, Windsurf, Aider, or other tools?"
-    Yes. All 156 skills can be converted to native formats for Cursor, Aider, Kilo Code, Windsurf, OpenCode, Augment, and Antigravity. Run `./scripts/convert.sh --tool all` and then install with `./scripts/install.sh --tool <name>`. See [Multi-Tool Integrations](integrations.md) for details.
+    Yes. All 235 skills can be converted to native formats for Cursor, Aider, Kilo Code, Windsurf, OpenCode, Augment, and Antigravity. Run `./scripts/convert.sh --tool all` and then install with `./scripts/install.sh --tool <name>`. See [Multi-Tool Integrations](integrations.md) for details.
 
 ??? question "Can I use Agent Skills in ChatGPT?"
     Yes. We have [6 Custom GPTs](custom-gpts.md) that bring Agent Skills directly into ChatGPT — no installation needed. Just click and start chatting.

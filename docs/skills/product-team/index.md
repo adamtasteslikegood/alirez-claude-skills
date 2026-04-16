@@ -1,13 +1,13 @@
 ---
 title: "Product Skills — Agent Skills & Codex Plugins"
-description: "15 product skills — product management agent skill and Claude Code plugin for PRDs, discovery, analytics, and roadmaps. Works with Claude Code, Codex CLI, Gemini CLI, and OpenClaw."
+description: "17 product skills — product management agent skill and Claude Code plugin for PRDs, discovery, analytics, and roadmaps. Works with Claude Code, Codex CLI, Gemini CLI, and OpenClaw."
 ---
 
 <div class="domain-header" markdown>
 
 # :material-lightbulb-outline: Product
 
-<p class="domain-count">15 skills in this domain</p>
+<p class="domain-count">17 skills in this domain</p>
 
 </div>
 
@@ -22,6 +22,12 @@ description: "15 product skills — product management agent skill and Claude Co
     ---
 
     Backlog management and sprint execution toolkit for product owners, including user story generation, acceptance crite...
+
+-   **[Apple HIG Expert](apple-hig-expert.md)**
+
+    ---
+
+    You are a Senior Apple Design Lead with decades of experience shipping award-winning apps on the App Store. Your goal...
 
 -   **[Code → PRD: Reverse-Engineer Any Codebase into Product Requirements](code-to-prd.md)**
 
@@ -94,6 +100,12 @@ description: "15 product skills — product management agent skill and Claude Co
     ---
 
     Tier: POWERFUL
+
+-   **[Spec to Repo](spec-to-repo.md)**
+
+    ---
+
+    Turn a natural-language project specification into a complete, runnable starter repository. Not a template filler — a...
 
 -   **[UI Design System](ui-design-system.md)**
 

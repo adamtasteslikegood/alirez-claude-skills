@@ -1,6 +1,6 @@
 ---
-title: 205 Agent Skills for Codex, Gemini CLI & OpenClaw
-description: "205 production-ready Claude Code skills and agent plugins for 11 AI coding tools. Engineering, product, marketing, compliance, and finance agent skills for Claude Code, OpenAI Codex, Gemini CLI, Cursor, and OpenClaw."
+title: 235 Agent Skills for Codex, Gemini CLI & OpenClaw
+description: "235 production-ready Claude Code skills and agent plugins for 12 AI coding tools. Engineering, product, marketing, compliance, and finance agent skills for Claude Code, OpenAI Codex, Gemini CLI, Hermes Agent, Cursor, and OpenClaw."
 hide:
   - toc
   - edit
@@ -14,7 +14,7 @@ hide:
 
 # Agent Skills
 
-205 production-ready skills, 16 agents, 3 personas, and an orchestration protocol for AI coding tools.
+235 production-ready skills, 28 agents, 3 personas, and an orchestration protocol for AI coding tools.
 { .hero-subtitle }
 
 [Get Started](getting-started.md){ .md-button .md-button--primary }
@@ -49,7 +49,7 @@ hide:
 
 <div class="grid cards" markdown>
 
--   :material-toolbox:{ .lg .middle } **204 Skills**
+-   :material-toolbox:{ .lg .middle } **235 Skills**
 
     ---
 
@@ -57,7 +57,7 @@ hide:
 
     [:octicons-arrow-right-24: Browse skills](skills/)
 
--   :material-robot:{ .lg .middle } **16 Agents**
+-   :material-robot:{ .lg .middle } **28 Agents**
 
     ---
 
@@ -81,7 +81,7 @@ hide:
 
     [:octicons-arrow-right-24: Learn patterns](orchestration.md)
 
--   :material-language-python:{ .lg .middle } **268 Python Tools**
+-   :material-language-python:{ .lg .middle } **314 Python Tools**
 
     ---
 
@@ -89,7 +89,7 @@ hide:
 
     [:octicons-arrow-right-24: Getting started](getting-started.md)
 
--   :material-puzzle-outline:{ .lg .middle } **28 Plugins**
+-   :material-puzzle-outline:{ .lg .middle } **30 Plugins**
 
     ---
 
@@ -97,7 +97,7 @@ hide:
 
     [:octicons-arrow-right-24: Plugin marketplace](plugins/)
 
--   :material-console:{ .lg .middle } **19 Commands**
+-   :material-console:{ .lg .middle } **27 Commands**
 
     ---
 
@@ -105,7 +105,7 @@ hide:
 
     [:octicons-arrow-right-24: View commands](commands/)
 
--   :material-swap-horizontal:{ .lg .middle } **11 Tool Support**
+-   :material-swap-horizontal:{ .lg .middle } **12 Tool Support**
 
     ---
 
@@ -135,7 +135,7 @@ hide:
 
     Architecture, frontend, backend, fullstack, QA, DevOps, SecOps, AI/ML, data engineering, Playwright testing, self-improving agent
 
-    [:octicons-arrow-right-24: 30 skills](skills/engineering-team/)
+    [:octicons-arrow-right-24: 37 skills](skills/engineering-team/)
 
 -   :material-lightning-bolt:{ .lg .middle } **Engineering — Advanced**
 
@@ -143,7 +143,7 @@ hide:
 
     Agent designer, RAG architect, database designer, CI/CD builder, MCP server builder, security auditor, tech debt tracker
 
-    [:octicons-arrow-right-24: 35 skills](skills/engineering/)
+    [:octicons-arrow-right-24: 45 skills](skills/engineering/)
 
 -   :material-bullseye-arrow:{ .lg .middle } **Product**
 
@@ -151,7 +151,7 @@ hide:
 
     Product manager, agile PO, strategist, UX researcher, UI design system, landing pages, SaaS scaffolder, analytics, experiment designer
 
-    [:octicons-arrow-right-24: 14 skills](skills/product-team/)
+    [:octicons-arrow-right-24: 16 skills](skills/product-team/)
 
 -   :material-bullhorn:{ .lg .middle } **Marketing**
 
@@ -159,7 +159,7 @@ hide:
 
     Content, SEO, CRO, channels, growth, intelligence, sales — 7 specialist pods with 32 Python tools
 
-    [:octicons-arrow-right-24: 43 skills](skills/marketing-skill/)
+    [:octicons-arrow-right-24: 44 skills](skills/marketing-skill/)
 
 -   :material-clipboard-check:{ .lg .middle } **Project Management**
 
@@ -167,7 +167,7 @@ hide:
 
     Senior PM, scrum master, Jira expert, Confluence expert, Atlassian admin, templates
 
-    [:octicons-arrow-right-24: 6 skills](skills/project-management/)
+    [:octicons-arrow-right-24: 9 skills](skills/project-management/)
 
 -   :material-star-circle:{ .lg .middle } **C-Level Advisory**
 
@@ -175,7 +175,7 @@ hide:
 
     Full C-suite (10 roles), orchestration, board meetings, culture frameworks, strategic alignment
 
-    [:octicons-arrow-right-24: 28 skills](skills/c-level-advisor/)
+    [:octicons-arrow-right-24: 34 skills](skills/c-level-advisor/)
 
 -   :material-shield-check:{ .lg .middle } **Regulatory & Quality**
 
@@ -183,7 +183,7 @@ hide:
 
     ISO 13485, MDR 2017/745, FDA, ISO 27001, GDPR, CAPA, risk management, quality documentation
 
-    [:octicons-arrow-right-24: 13 skills](skills/ra-qm-team/)
+    [:octicons-arrow-right-24: 14 skills](skills/ra-qm-team/)
 
 -   :material-trending-up:{ .lg .middle } **Business & Growth**
 
@@ -191,7 +191,7 @@ hide:
 
     Customer success, sales engineer, revenue operations, contracts & proposals
 
-    [:octicons-arrow-right-24: 4 skills](skills/business-growth/)
+    [:octicons-arrow-right-24: 5 skills](skills/business-growth/)
 
 -   :material-currency-usd:{ .lg .middle } **Finance**
 
@@ -199,7 +199,7 @@ hide:
 
     Financial analyst, SaaS metrics coach — DCF valuation, budgeting, forecasting, ARR/MRR/churn/LTV
 
-    [:octicons-arrow-right-24: 2 skills](skills/finance/)
+    [:octicons-arrow-right-24: 4 skills](skills/finance/)
 
 </div>
 
@@ -225,7 +225,7 @@ hide:
 
     ---
 
-    Plugin marketplace for Claude Code. Conversion script for 10 other tools. No manual file management.
+    Plugin marketplace for Claude Code. Sync scripts for Codex, Gemini, and Hermes Agent. Conversion script for 8 more tools.
 
 -   :material-puzzle:{ .lg .middle } **Self-contained**
 
@@ -237,7 +237,7 @@ hide:
 
     ---
 
-    Native support for 11 AI coding tools. Write once, convert to any tool's format automatically.
+    Native support for 12 AI coding tools. Write once, convert to any tool's format automatically.
 
 -   :material-check-decagram:{ .lg .middle } **Production-grade**
 
@@ -272,6 +272,15 @@ hide:
     ```bash
     git clone https://github.com/alirezarezvani/claude-skills.git
     cd claude-skills && ./scripts/gemini-install.sh
+    ```
+
+=== "Hermes Agent"
+
+    ```bash
+    git clone https://github.com/alirezarezvani/claude-skills.git
+    cd claude-skills
+    python scripts/sync-hermes-skills.py --verbose
+    # Skills appear in /skills and /<skill-name> automatically
     ```
 
 === "Cursor / Windsurf / Aider"
