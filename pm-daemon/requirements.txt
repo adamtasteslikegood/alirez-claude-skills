@@ -1,0 +1,6 @@
+mcp
+fastmcp
+watchdog
+requests
+markdown
+python-dotenv
