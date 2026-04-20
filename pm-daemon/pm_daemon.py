@@ -107,6 +107,7 @@ class PMFileEventHandler(FileSystemEventHandler):
         if page_id:
             # Update existing page
             url = f"https://{URL_BASE}/wiki/api/v2/pages/{page_id}"
+            payload["id"] = page_id
             payload["version"] = {"number": version, "message": "Updated by PM Daemon"}
             req_func = requests.put
             logger.info(f"Updating existing Confluence page: {page_id} to version {version}")
