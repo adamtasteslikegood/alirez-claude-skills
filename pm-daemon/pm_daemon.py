@@ -39,7 +39,15 @@ PARENT_PAGE_ID = "11796481"  # Project Documentation page ID
 # Initialize FastMCP server
 mcp = FastMCP("PM Daemon")
 
-WATCHED_FILES = ["plan.md", "roadmap.md", "planning_notes.md", "design-plan.md"]
+WATCHED_FILES = [
+    "plan.md",
+    "roadmap.md",
+    "planning_notes.md",
+    "design-plan.md",
+    "SCRUM_BOOTSTRAP_AND_BOARD_PLAN.md",
+    "SPRINT_0_PLAN.md",
+    "ATLASSIAN_PM_LINK.md",
+]
 
 class PMFileEventHandler(FileSystemEventHandler):
     def __init__(self, workspace_dir):
@@ -69,7 +77,13 @@ class PMFileEventHandler(FileSystemEventHandler):
             title = "v0.2 Planning Session Review & Notes"
         elif filepath.name == "design-plan.md":
             title = "v0.2 Design Implementation Plan"
-            
+        elif filepath.name == "SCRUM_BOOTSTRAP_AND_BOARD_PLAN.md":
+            title = "v0.2 Scrum Bootstrap & Board Plan"
+        elif filepath.name == "SPRINT_0_PLAN.md":
+            title = "v0.2 Sprint 0 Plan"
+        elif filepath.name == "ATLASSIAN_PM_LINK.md":
+            title = "v0.2 Atlassian PM Link"
+
         content = filepath.read_text()
         logger.info(f"Syncing content of {filepath.name} to Confluence: {title}")
         
@@ -134,10 +148,15 @@ def get_project_status() -> str:
     workspace_dir = Path(os.getcwd())
     status = []
     for filename in WATCHED_FILES:
-        filepath = workspace_dir / filename
-        if filepath.exists():
+        matches = [workspace_dir / filename, *workspace_dir.rglob(filename)]
+        seen_paths = set()
+        for filepath in matches:
+            if not filepath.exists() or filepath in seen_paths:
+                continue
+            seen_paths.add(filepath)
             content = filepath.read_text()
-            status.append(f"--- {filename} ---\n{content[:1500]}" + ("..." if len(content) > 1500 else ""))
+            label = str(filepath.relative_to(workspace_dir))
+            status.append(f"--- {label} ---\n{content[:1500]}" + ("..." if len(content) > 1500 else ""))
     
     if not status:
         return "No local planning files found in the current workspace."
@@ -153,10 +172,14 @@ def sync_pm_documents() -> str:
     handler = PMFileEventHandler(workspace_dir)
     synced = []
     for filename in WATCHED_FILES:
-        filepath = workspace_dir / filename
-        if filepath.exists():
+        matches = [workspace_dir / filename, *workspace_dir.rglob(filename)]
+        seen_paths = set()
+        for filepath in matches:
+            if not filepath.exists() or filepath in seen_paths:
+                continue
+            seen_paths.add(filepath)
             handler.sync_to_confluence(filepath)
-            synced.append(filename)
+            synced.append(str(filepath.relative_to(workspace_dir)))
             
     return f"Sync triggered successfully for {', '.join(synced)}. The PM Daemon has updated the documents in Atlassian."
 
@@ -201,15 +224,22 @@ def start_watcher(workspace_dir: str):
     logger.info(f"Starting file watcher on workspace: {workspace_dir}")
     event_handler = PMFileEventHandler(workspace_dir)
     observer = Observer()
-    observer.schedule(event_handler, workspace_dir, recursive=False)
+    observer.schedule(event_handler, workspace_dir, recursive=True)
     observer.start()
     return observer
 
 if __name__ == "__main__":
+    import time
     workspace_dir = os.getcwd()
     observer = start_watcher(workspace_dir)
+    watch_only = "--watch-only" in sys.argv
     try:
-        mcp.run()
+        if watch_only:
+            logger.info("Running in --watch-only mode (no MCP transport). Press Ctrl+C to stop.")
+            while True:
+                time.sleep(60)
+        else:
+            mcp.run()
     except KeyboardInterrupt:
         pass
     finally:
