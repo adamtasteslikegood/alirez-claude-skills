@@ -15,11 +15,28 @@ from dotenv import load_dotenv
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-load_dotenv(Path(os.getcwd()) / '.env')
+# Find .env in the current directory or parents
+def find_dotenv():
+    current = Path(os.getcwd())
+    for parent in [current, *current.parents]:
+        dotenv_path = parent / '.env'
+        if dotenv_path.exists():
+            return dotenv_path
+    return None
 
-URL_BASE = os.environ.get('ATLASSIAN_URL', 'tasteslikegood.atlassian.net')
+dotenv_path = find_dotenv()
+if dotenv_path:
+    load_dotenv(dotenv_path)
+    logger.info(f"Loaded .env from {dotenv_path}")
+else:
+    logger.warning("Could not find .env file")
+
+URL_BASE = os.environ.get('ATLASSIAN_URL', 'tasteslikegood.atlassian.net').strip().removeprefix("https://").removeprefix("http://").rstrip("/")
 EMAIL = os.environ.get('ATLASSIAN_EMAIL')
 TOKEN = os.environ.get('ATLASSIAN_API_TOKEN')
+
+# Request timeouts
+TIMEOUT = 30
 
 if EMAIL and TOKEN:
     AUTH_STR = f"{EMAIL}:{TOKEN}"
@@ -33,8 +50,8 @@ else:
     HEADERS = {}
     logger.warning("Atlassian credentials missing from .env")
 
-SPACE_ID = "11042818"  # TLG space ID
-PARENT_PAGE_ID = "11796481"  # Project Documentation page ID
+SPACE_ID = os.environ.get('CONFLUENCE_SPACE_ID', "11042818")  # TLG space ID
+PARENT_PAGE_ID = os.environ.get('CONFLUENCE_PARENT_PAGE_ID', "11796481")  # Project Documentation page ID
 
 # Initialize FastMCP server
 mcp = FastMCP("PM Daemon")
@@ -84,7 +101,12 @@ class PMFileEventHandler(FileSystemEventHandler):
         elif filepath.name == "ATLASSIAN_PM_LINK.md":
             title = "v0.2 Atlassian PM Link"
 
-        content = filepath.read_text()
+        try:
+            content = filepath.read_text(encoding="utf-8", errors="replace")
+        except Exception as e:
+            logger.error(f"Failed to read {filepath}: {e}")
+            return
+
         logger.info(f"Syncing content of {filepath.name} to Confluence: {title}")
         
         html_content = markdown.markdown(content, extensions=['fenced_code', 'tables'])
@@ -95,13 +117,13 @@ class PMFileEventHandler(FileSystemEventHandler):
         version = 1
         
         try:
-            resp = requests.get(search_url, headers=HEADERS)
+            resp = requests.get(search_url, headers=HEADERS, timeout=TIMEOUT)
             if resp.status_code == 200:
                 results = resp.json().get('results', [])
                 if results:
                     page_id = results[0]['id']
                     # Get current version
-                    page_resp = requests.get(f"https://{URL_BASE}/wiki/api/v2/pages/{page_id}", headers=HEADERS)
+                    page_resp = requests.get(f"https://{URL_BASE}/wiki/api/v2/pages/{page_id}", headers=HEADERS, timeout=TIMEOUT)
                     if page_resp.status_code == 200:
                         version = page_resp.json().get('version', {}).get('number', 0) + 1
         except Exception as e:
@@ -129,10 +151,10 @@ class PMFileEventHandler(FileSystemEventHandler):
             # Create new page
             url = f"https://{URL_BASE}/wiki/api/v2/pages"
             req_func = requests.post
-            logger.info(f"Creating new Confluence page")
+            logger.info(f"Creating new Confluence page: {title}")
 
         try:
-            response = req_func(url, headers=HEADERS, json=payload)
+            response = req_func(url, headers=HEADERS, json=payload, timeout=TIMEOUT)
             if response.status_code in [200, 201]:
                 logger.info(f"Successfully synced: {title}")
             else:
@@ -154,9 +176,12 @@ def get_project_status() -> str:
             if not filepath.exists() or filepath in seen_paths:
                 continue
             seen_paths.add(filepath)
-            content = filepath.read_text()
-            label = str(filepath.relative_to(workspace_dir))
-            status.append(f"--- {label} ---\n{content[:1500]}" + ("..." if len(content) > 1500 else ""))
+            try:
+                content = filepath.read_text(encoding="utf-8", errors="replace")
+                label = str(filepath.relative_to(workspace_dir))
+                status.append(f"--- {label} ---\n{content[:1500]}" + ("..." if len(content) > 1500 else ""))
+            except Exception as e:
+                logger.error(f"Failed to read {filepath}: {e}")
     
     if not status:
         return "No local planning files found in the current workspace."
@@ -184,15 +209,18 @@ def sync_pm_documents() -> str:
     return f"Sync triggered successfully for {', '.join(synced)}. The PM Daemon has updated the documents in Atlassian."
 
 @mcp.tool()
-def create_epic_from_roadmap(epic_name: str, description: str) -> str:
+def create_epic_from_roadmap(epic_name: str, description: str, project_key: str = None) -> str:
     """Create a new Epic in Jira based on roadmap planning."""
     if not HEADERS:
         return "Error: Atlassian credentials missing."
+    
+    # Use provided project_key, or fall back to env var, or default to KAN
+    target_project = project_key or os.environ.get('JIRA_PROJECT_KEY', 'KAN')
         
     url = f"https://{URL_BASE}/rest/api/3/issue"
     payload = {
         "fields": {
-            "project": {"key": "KAN"},
+            "project": {"key": target_project},
             "summary": epic_name,
             "description": {
                 "type": "doc",
@@ -211,12 +239,12 @@ def create_epic_from_roadmap(epic_name: str, description: str) -> str:
     }
     
     try:
-        response = requests.post(url, headers=HEADERS, json=payload)
+        response = requests.post(url, headers=HEADERS, json=payload, timeout=TIMEOUT)
         if response.status_code == 201:
             issue_key = response.json().get('key')
             return f"Successfully created Epic: {issue_key}"
         else:
-            return f"Failed to create Epic: {response.status_code} {response.text}"
+            return f"Failed to create Epic in {target_project}: {response.status_code} {response.text}"
     except Exception as e:
         return f"Error creating Epic: {e}"
 
