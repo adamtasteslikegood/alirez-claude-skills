@@ -584,11 +584,6 @@
       "description": "Use when a security incident has been detected or declared and needs classification, triage, escalation path determination, and forensic evidence collection. Covers SEV1-SEV4 classification, false positive filtering, incident taxonomy, and NIST SP 800-61 lifecycle."
     },
     {
-      "name": "init",
-      "category": "engineering",
-      "description": ">-"
-    },
-    {
       "name": "migrate",
       "category": "engineering",
       "description": ">-"
@@ -717,6 +712,11 @@
       "name": "skills-status",
       "category": "engineering",
       "description": "Memory health dashboard showing line counts, topic files, capacity, stale entries, and recommendations."
+    },
+    {
+      "name": "snowflake-development",
+      "category": "engineering",
+      "description": "Use when writing Snowflake SQL, building data pipelines with Dynamic Tables or Streams/Tasks, using Cortex AI functions, creating Cortex Agents, writing Snowpark Python, configuring dbt for Snowflake, or troubleshooting Snowflake errors."
     },
     {
       "name": "stripe-integration-expert",
@@ -1017,6 +1017,11 @@
       "name": "statistical-analyst",
       "category": "engineering-advanced",
       "description": "Run hypothesis tests, analyze A/B experiment results, calculate sample sizes, and interpret statistical significance with effect sizes. Use when you need to validate whether observed differences are real, size an experiment correctly before launch, or interpret test results with confidence."
+    },
+    {
+      "name": "status",
+      "category": "engineering-advanced",
+      "description": "Show experiment dashboard with results, active loops, and progress."
     },
     {
       "name": "tc-tracker",
