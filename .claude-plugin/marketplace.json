@@ -98,6 +98,73 @@
       "category": "leadership"
     },
     {
+      "name": "general-counsel-advisor",
+      "source": "./c-level-advisor/general-counsel-advisor",
+      "description": "General Counsel advisory for startups: contract risk scanner (12 founder-killer patterns: auto-renew traps, uncapped indemnity, vague IP, MFN pricing, missing DPA, one-sided venue, broad non-solicit, perpetual license-back, etc.) and term sheet analyzer (0-100 founder-friendliness across 12 dimensions). 3 in-depth references: contracts playbook (7 startup contract types), IP + regulatory landscape mapping (HIPAA, GDPR, FDA, fintech, EU AI Act, SOC 2 → ISO sequencing), term sheet decoder (full glossary + founder-friendly defaults). Standalone-installable; also bundled in c-level-skills. Stdlib-only. NOT a substitute for licensed counsel.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Alireza Rezvani"
+      },
+      "keywords": [
+        "general-counsel",
+        "gc",
+        "legal-review",
+        "contract-review",
+        "term-sheet",
+        "ip-strategy",
+        "regulatory",
+        "dpa",
+        "indemnity",
+        "liability-cap"
+      ],
+      "category": "leadership"
+    },
+    {
+      "name": "chief-data-officer-advisor",
+      "source": "./c-level-advisor/chief-data-officer-advisor",
+      "description": "Chief Data Officer advisory for startups: AI training data audit (origin × class × use-case matrix with GDPR Art. 6 + EU AI Act citations), data product strategy picker (warehouse vs lakehouse vs mesh + 6-layer build-vs-buy + 12-month sequencing), data asset valuator (strategic value 0-10 + M&A multiplier with carve-out penalties + 3 ranked productization paths). 4 references answering one decision each: training rights, data product strategy, customer-data-as-asset, data team org evolution. Standalone-installable; also bundled in c-level-skills. Strategic only — does not duplicate engineering data skills.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Alireza Rezvani"
+      },
+      "keywords": [
+        "chief-data-officer",
+        "cdo",
+        "data-strategy",
+        "ai-training-data",
+        "consent-provenance",
+        "data-product-strategy",
+        "data-mesh",
+        "lakehouse",
+        "data-as-asset",
+        "data-team-org"
+      ],
+      "category": "leadership"
+    },
+    {
+      "name": "chief-ai-officer-advisor",
+      "source": "./c-level-advisor/chief-ai-officer-advisor",
+      "description": "Chief AI Officer advisory for startups: model build-vs-buy calculator (API vs fine-tune vs build with 3-year TCO across 6 paths + breakeven that balances economics with practical feasibility), AI risk classifier (EU AI Act tier with 7 Article citations + US state patchwork: NYC LL 144, CO AI Act, IL HB 53, CA SB 1001, IL BIPA + industry overlays for FDA AI/ML, CFPB Circular 2023-03, NYDFS Reg 23, NAIC, ECOA, Fed SR 11-7), AI cost economics (API vs self-hosted breakeven with 2026 pricing across A100/H100, utilization reality, hidden costs). 4 in-depth references each citing 5+ authoritative sources. Standalone-installable; also bundled in c-level-skills. Strategic only — does not duplicate engineering AI/ML skills.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Alireza Rezvani"
+      },
+      "keywords": [
+        "chief-ai-officer",
+        "caio",
+        "ai-strategy",
+        "model-buildvsbuy",
+        "fine-tuning",
+        "eu-ai-act",
+        "ai-risk-tier",
+        "nist-ai-rmf",
+        "ai-cost-economics",
+        "ai-self-hosted-breakeven",
+        "ai-team-org"
+      ],
+      "category": "leadership"
+    },
+    {
       "name": "engineering-advanced-skills",
       "source": "./engineering",
       "description": "40 advanced engineering skills: agent designer, agent workflow designer, AgentHub, RAG architect, database designer, focused-fix, browser-automation, spec-driven-workflow, secrets-vault-manager, sql-database-assistant, migration architect, observability designer, dependency auditor, release manager, API reviewer, CI/CD pipeline builder, MCP server builder, skill security auditor, performance profiler, Helm chart builder, Terraform patterns, self-eval, llm-cost-optimizer, prompt-governance, behuman, code-tour, demo-video, data-quality-auditor, statistical-analyst, llm-wiki (second brain for Obsidian + Claude Code, Karpathy pattern), feature-flags-architect (flag debt scanner, rollout planner, kill-switch audit), kubernetes-operator (CRD validator, reconcile linter, capability auditor), chaos-engineering (experiment designer, blast-radius calculator, postmortem generator), ship-gate (pre-production 8-category audit with deploy-intent intercept), slo-architect (SLO designer, error-budget calculator with multi-window burn-rate alerts, SLO reviewer per Google SRE Workbook), and more.",
