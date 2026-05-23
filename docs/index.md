@@ -1,6 +1,6 @@
 ---
 title: 329 Agent Skills for Codex, Gemini CLI & OpenClaw
-description: "329 production-ready Claude Code skills and agent plugins for 12 AI coding tools — v2.8.1 adds a productivity-shaped `handoff` skill (Matt Pocock-inspired: first-run setup, redaction linter, SessionStart + SessionEnd hooks, fidelity self-check, --refresh); v2.8.0 added two new top-level domains (business-operations + commercial, 15 skills); v2.7.3 added AEO (Answer Engine Optimization for ChatGPT / Perplexity / Claude / Gemini / Mistral citation) + security-guidance PreToolUse hook; v2.7.0 added the megaprompt-derived productivity / marketing / research stacks; v2.6.0 added the Matt Pocock productivity quartet. Engineering, product, marketing, compliance, and finance agent skills for Claude Code, OpenAI Codex, Gemini CLI, Hermes Agent, Cursor, and OpenClaw."
+description: "329 production-ready Claude Code skills and agent plugins for 12 AI coding tools — v2.8.2 adds a productivity-shaped `handoff` skill (Matt Pocock-inspired: first-run setup, redaction linter, SessionStart + SessionEnd hooks, fidelity self-check, --refresh); v2.8.1 upgraded the engineering role-skills (senior-fullstack/frontend/backend) with karpathy-coder + Matt Pocock decision engines; v2.8.0 added two new top-level domains (business-operations + commercial, 15 skills); v2.7.3 added AEO (Answer Engine Optimization for ChatGPT / Perplexity / Claude / Gemini / Mistral citation) + security-guidance PreToolUse hook; v2.7.0 added the megaprompt-derived productivity / marketing / research stacks; v2.6.0 added the Matt Pocock productivity quartet. Engineering, product, marketing, compliance, and finance agent skills for Claude Code, OpenAI Codex, Gemini CLI, Hermes Agent, Cursor, and OpenClaw."
 hide:
   - toc
   - edit
@@ -14,7 +14,7 @@ hide:
 
 # Agent Skills
 
-329 production-ready skills, 49+ cs-* agents (incl. founder-mode C-suite, Matt Pocock productivity quartet + v2.8.1 productivity/handoff, v2.7.0 megaprompt-derived research stack, v2.7.3 cs-aeo, and v2.8.0 business-operations + commercial), 7 personas, and an orchestration protocol for AI coding tools.
+329 production-ready skills, 49+ cs-* agents (incl. founder-mode C-suite, Matt Pocock productivity quartet + v2.8.2 productivity/handoff, v2.8.1 engineering role-skills, v2.7.0 megaprompt-derived research stack, v2.7.3 cs-aeo, and v2.8.0 business-operations + commercial), 7 personas, and an orchestration protocol for AI coding tools.
 { .hero-subtitle }
 
 [Get Started](getting-started.md){ .md-button .md-button--primary }
@@ -53,7 +53,7 @@ hide:
 
     ---
 
-    Production-ready instruction packages with structured workflows, Python automation tools, and reference documentation across 14 domains. v2.8.1 adds productivity/handoff (Matt Pocock-inspired: first-run setup, redaction linter, SessionStart + SessionEnd hooks, fidelity self-check). v2.8.0 added two new top-level domains: business-operations and commercial (15 skills). v2.7.3 added AEO and security-guidance PreToolUse hook. v2.7.0 added 13 Path-B skills. v2.6.0 added the Matt Pocock productivity quartet.
+    Production-ready instruction packages with structured workflows, Python automation tools, and reference documentation across 14 domains. v2.8.2 adds productivity/handoff (Matt Pocock-inspired: first-run setup, redaction linter, SessionStart + SessionEnd hooks, fidelity self-check). v2.8.1 upgraded the engineering role-skills (senior-fullstack/frontend/backend). v2.8.0 added two new top-level domains: business-operations and commercial (15 skills). v2.7.3 added AEO and security-guidance PreToolUse hook. v2.7.0 added 13 Path-B skills. v2.6.0 added the Matt Pocock productivity quartet.
 
     [:octicons-arrow-right-24: Browse skills](skills/index.md)
 

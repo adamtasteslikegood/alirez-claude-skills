@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a **comprehensive skills library** for Claude AI and Claude Code - reusable, production-ready skill packages that bundle domain expertise, best practices, analysis tools, and strategic frameworks. The repository provides modular skills that teams can download and use directly in their workflows.
 
-**Current Scope:** 329 production-ready skills across 14 domains with ~448 Python automation tools, ~586 reference guides, 49+ agents (cs-* + 7 personas), and 79+ slash commands. **v2.8.0 (complete)** added 2 new top-level domains — **business-operations/** (7 internal-ops skills: orchestrator + process-mapper + vendor-management + capacity-planner + internal-comms + knowledge-ops + procurement-optimizer) and **commercial/** (8 per-deal-economics skills: orchestrator + pricing-strategist + deal-desk + partnerships-architect + channel-economics + commercial-policy + rfp-responder + commercial-forecaster) — with orchestrator skills using `context: fork` for chaining, Matt Pocock docs-anchored "Forcing-question library" in every SKILL.md, plus `/cs:grill-bizops` and `/cs:grill-commercial`. **v2.8.1** adds a productivity-shaped `handoff` skill (sibling to engineering/handoff) inspired by Matt Pocock — first-run setup with configurable save location, redaction linter, SessionStart + SessionEnd hooks, fidelity self-check, `--refresh` flag. v2.7.3 ports `alirezarezvani/aeo-box` — AEO (Answer Engine Optimization) skill into marketing-skill/ + security-guidance PreToolUse hook into engineering/. v2.7.0 added 13 Path-B skills across 3 top-level domains (productivity, marketing, research). v2.6.0 added 4 Matt Pocock-derived productivity skills.
+**Current Scope:** 329 production-ready skills across 14 domains with ~448 Python automation tools, ~586 reference guides, 49+ agents (cs-* + 7 personas), and 79+ slash commands. **v2.8.0 (complete)** added 2 new top-level domains — **business-operations/** (7 internal-ops skills: orchestrator + process-mapper + vendor-management + capacity-planner + internal-comms + knowledge-ops + procurement-optimizer) and **commercial/** (8 per-deal-economics skills: orchestrator + pricing-strategist + deal-desk + partnerships-architect + channel-economics + commercial-policy + rfp-responder + commercial-forecaster) — with orchestrator skills using `context: fork` for chaining, Matt Pocock docs-anchored "Forcing-question library" in every SKILL.md, plus `/cs:grill-bizops` and `/cs:grill-commercial`. **v2.8.2** adds a productivity-shaped `handoff` skill (sibling to engineering/handoff) inspired by Matt Pocock — first-run setup with configurable save location, redaction linter, SessionStart + SessionEnd hooks, fidelity self-check, `--refresh` flag. **v2.8.1** upgraded the engineering role-skills (senior-fullstack / senior-frontend / senior-backend) with karpathy-coder + Matt Pocock decision engines + per-role forcing questions. v2.7.3 ports `alirezarezvani/aeo-box` — AEO (Answer Engine Optimization) skill into marketing-skill/ + security-guidance PreToolUse hook into engineering/. v2.7.0 added 13 Path-B skills across 3 top-level domains (productivity, marketing, research). v2.6.0 added 4 Matt Pocock-derived productivity skills.
 
 **Key Distinction**: This is NOT a traditional application. It's a library of skill packages meant to be extracted and deployed by users into their own Claude workflows.
 
@@ -137,11 +137,11 @@ See [standards/git/git-workflow-standards.md](standards/git/git-workflow-standar
 
 ## Current Version
 
-**Version:** v2.8.1 (released — productivity/handoff v1.1)
+**Version:** v2.8.2 (released — productivity/handoff v1.1)
 
-**v2.8.1 highlights — productivity/handoff skill, Matt Pocock-inspired:**
+**v2.8.2 highlights — productivity/handoff skill, Matt Pocock-inspired:**
 
-Single-skill point release after v2.8.0. New `productivity/handoff/` skill is a sibling to the existing `engineering/handoff/`. Both preserve Matt Pocock's seven-sentence body verbatim; the productivity variant adds the wrappers the engineering port deliberately skipped:
+Single-skill point release after v2.8.1. New `productivity/handoff/` skill is a sibling to the existing `engineering/handoff/`. Both preserve Matt Pocock's seven-sentence body verbatim; the productivity variant adds the wrappers the engineering port deliberately skipped:
 
 - **First-run setup** (`scripts/setup.py`) — 5-question Q&A. No pre-selected default for save location: user explicitly picks OS temp / home folder / per-project `.handoff/` / custom path on first run. Prompt-once-then-default model: declining setup drops a sentinel so the prompt never re-appears.
 - **Redaction linter** (`scripts/redaction_linter.py`) — 17 stdlib regex patterns (AWS / GitHub / OpenAI / Anthropic / Slack / Stripe / JWT / private-key blocks / env-style secret assignments / DB connection strings / bearer tokens / URL token params / email / phone). Strict-by-default with inline `<!-- handoff:allow secret -->` whitelist marker. Operationalizes Matt's redaction sentence.
@@ -152,7 +152,7 @@ Single-skill point release after v2.8.0. New `productivity/handoff/` skill is a 
 
 Ships 7 stdlib-only Python tools, 5 reference docs (each citing 5-6 sources), `cs-handoff-author` agent, `/cs:handoff` + `/cs:handoff-setup` commands. Plugin audit (8 phases): structure 86.0/100, quality 63.0/100, security PASS (0 critical, 0 high). 2 PRs merged: #724 (v1.0) + #728 (v1.1).
 
-**v2.8.1 master plan:** in-conversation design + 8-phase audit applied twice (after each PR).
+**v2.8.2 master plan:** in-conversation design + 8-phase audit applied twice (after each PR).
 
 ---
 
@@ -404,5 +404,5 @@ This repository publishes skills to **ClawHub** (clawhub.com) as the distributio
 ---
 
 **Last Updated:** May 23, 2026
-**Version:** v2.8.1
+**Version:** v2.8.2
 **Status:** 329 skills deployed across 14 domains, 60 marketplace plugins, docs site live

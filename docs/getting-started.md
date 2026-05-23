@@ -1,6 +1,6 @@
 ---
 title: Install Agent Skills — Codex, Gemini CLI, OpenClaw Setup
-description: "How to install 329 Claude Code skills and agent plugins for 12 AI coding tools. Step-by-step setup for Claude Code, OpenAI Codex, Gemini CLI, OpenClaw, Cursor, Aider, Windsurf, and more. v2.8.1 adds productivity/handoff (Matt Pocock-inspired). v2.8.0 added business-operations + commercial domains."
+description: "How to install 329 Claude Code skills and agent plugins for 12 AI coding tools. Step-by-step setup for Claude Code, OpenAI Codex, Gemini CLI, OpenClaw, Cursor, Aider, Windsurf, and more. v2.8.2 adds productivity/handoff (Matt Pocock-inspired). v2.8.1 upgraded the engineering role-skills. v2.8.0 added business-operations + commercial domains."
 ---
 
 # Getting Started
