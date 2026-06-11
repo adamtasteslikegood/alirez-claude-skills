@@ -356,7 +356,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--sample",
         action="store_true",
-        help="Alias for --demo (repo-wide embedded-sample convention)",
+        help="Run with embedded sample color pairs (alias for --demo)",
     )
     return parser
 

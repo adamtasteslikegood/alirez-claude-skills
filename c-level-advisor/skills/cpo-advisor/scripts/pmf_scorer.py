@@ -563,7 +563,12 @@ def main():
     )
     args = parser.parse_args()
 
-    if args.input:
+    if args.sample:
+        # --sample wins over --input, consistent with the other sample-pattern tools.
+        if args.input:
+            print("Warning: --sample specified; ignoring --input", file=sys.stderr)
+        data = sample_data()
+    elif args.input:
         try:
             with open(args.input) as f:
                 data = json.load(f)
@@ -573,8 +578,6 @@ def main():
         except json.JSONDecodeError as e:
             print(f"Error: invalid JSON: {e}", file=sys.stderr)
             sys.exit(1)
-    elif args.sample:
-        data = sample_data()
     else:
         # Notice goes to stderr so `--json` output stays parseable when piped.
         print("No input file provided — running with sample data.\n", file=sys.stderr)

@@ -444,6 +444,8 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.sample:
+        if args.input_file:
+            print("Warning: --sample specified; ignoring input_file", file=sys.stderr)
         data = SAMPLE_DATA
     else:
         if not args.input_file:
