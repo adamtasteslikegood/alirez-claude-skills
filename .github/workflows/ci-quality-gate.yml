@@ -93,28 +93,24 @@ jobs:
           python scripts/check_plugin_json.py --all
 
       # ---- Audit guardrails (newgen-2026-06 gates) ----------------------
-      # TODO: flip to blocking after burn-in — concurrent fix agents are
-      # still converging; advisory for now so unrelated PRs aren't blocked.
-      # SLA: flip each gate to blocking by 2026-07-01 (or after 10 consecutive
-      # green advisory runs on dev, whichever comes first). Flip = delete the
-      # continue-on-error line. All four gates were green at PR #835 HEAD.
-      - name: Path-existence linter (gate G1 — advisory)
-        continue-on-error: true
+      # BLOCKING since PR-2 (flipped ahead of the 2026-07-01 SLA — every
+      # advisory run was green through PR #835). If a gate misfires on a
+      # legitimate edge case, extend its in-repo allowlist
+      # (scripts/check_paths_allowlist.txt, scripts/smoke_exceptions.txt)
+      # rather than re-adding continue-on-error.
+      - name: Path-existence linter (gate G1 — blocking)
         run: |
           python3 scripts/check_paths.py --all
 
-      - name: Dual-publish drift guard (gate G4 — advisory)
-        continue-on-error: true
+      - name: Dual-publish drift guard (gate G4 — blocking)
         run: |
           python3 scripts/check_dual_publish.py
 
-      - name: Script --help smoke gate (gate G8 — advisory)
-        continue-on-error: true
+      - name: Script --help smoke gate (gate G8 — blocking)
         run: |
           python3 scripts/smoke_scripts.py
 
-      - name: Counter derivation check (gate G3 — advisory)
-        continue-on-error: true
+      - name: Counter derivation check (gate G3 — blocking)
         run: |
           python3 scripts/derive_counters.py --check
 
