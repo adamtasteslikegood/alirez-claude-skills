@@ -242,7 +242,15 @@ def check_readme_badges(root: Path, derived: dict) -> list:
     out = []
     for key, pattern in BADGE_PATTERNS.items():
         match = pattern.search(text)
-        if match and int(match.group(1)) != derived[key]:
+        if not match:
+            # Fail loudly rather than skip: a renamed/removed badge would
+            # otherwise silently drop out of the gate (mirrors run_check's
+            # "no recognizable counter claims found" precedent).
+            out.append(
+                f"README badge: '{key}' badge not found "
+                f"(expected a '{key.capitalize()}-<n>-' shield)"
+            )
+        elif int(match.group(1)) != derived[key]:
             out.append(
                 f"README badge: '{key}' badge claims {match.group(1)}, "
                 f"derived {key}={derived[key]}"
