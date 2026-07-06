@@ -24,4 +24,4 @@ Serve coffee of traceable origin, in a space where people want to stay — not j
 2. **Service that remembers your name.** Relationship, not transaction.
 3. **Minimal waste.** Grounds, cups, and leftovers all have a destination.
 
-> The concrete problem this solves will be in `problema-solucao.md` `[ASSUMPTION: file to be created in PHASE 1]`.
+> The concrete problem this solves is in [problema-solucao](problema-solucao.md).
