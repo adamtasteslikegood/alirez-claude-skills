@@ -11,7 +11,7 @@ Deterministic, standard library only.
 
 Usage:
     python index_generator.py                      # demo on an embedded example bundle
-    python index_generator.py ./my-company      # dry-run: shows proposed tables
+    python index_generator.py ./my-company   # dry-run: shows proposed tables
     python index_generator.py ./my-company --write
     python index_generator.py ./my-company --output json
     python index_generator.py --sample
