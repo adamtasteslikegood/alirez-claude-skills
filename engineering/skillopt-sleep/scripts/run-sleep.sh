@@ -6,12 +6,20 @@
 # Usage: run-sleep.sh <run|dry-run|status|adopt|harvest|...> [args...]
 set -euo pipefail
 
-# This script lives at <repo>/plugins/run-sleep.sh, so the repo root (which
-# holds skillopt_sleep/) is one level up. CLAUDE_PLUGIN_ROOT (if set by Claude
-# Code) points at the plugin dir; the engine is then two levels above it.
+# In this vendored copy this script lives at
+# <plugin-root>/scripts/run-sleep.sh (engineering/skillopt-sleep/scripts/ in
+# alirezarezvani/claude-skills), so the plugin root (which holds
+# skillopt_sleep/) is one level up — that's what the first branch below
+# checks. CLAUDE_PLUGIN_ROOT (set by Claude Code when it invokes a plugin
+# script) points directly at that same plugin root in this layout, so
+# skillopt_sleep/ sits directly inside it, not two levels up as it would in
+# upstream's <repo>/plugins/claude-code/ layout — both are checked so this
+# script stays portable if it's ever reused in that shape again.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ -d "$SCRIPT_DIR/../skillopt_sleep" ]; then
   REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+elif [ -n "${CLAUDE_PLUGIN_ROOT:-}" ] && [ -d "$CLAUDE_PLUGIN_ROOT/skillopt_sleep" ]; then
+  REPO_ROOT="$CLAUDE_PLUGIN_ROOT"
 elif [ -n "${CLAUDE_PLUGIN_ROOT:-}" ] && [ -d "$CLAUDE_PLUGIN_ROOT/../../skillopt_sleep" ]; then
   REPO_ROOT="$(cd "$CLAUDE_PLUGIN_ROOT/../.." && pwd)"
 elif [ -n "${SKILLOPT_SLEEP_REPO:-}" ] && [ -d "$SKILLOPT_SLEEP_REPO/skillopt_sleep" ]; then

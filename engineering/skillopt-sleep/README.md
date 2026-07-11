@@ -183,6 +183,28 @@ they are not upstream yet.
     key shape it actually was. Redaction itself was unaffected — the text
     was scrubbed either way — but the placeholder implied a narrower match
     than the pattern actually has. Fixed: relabeled to `[REDACTED_API_KEY]`.
+18. **Cosmetic/hardening — stale fallback paths in the shell launchers.**
+    `scripts/sleep.sh`'s header comment and its `SKILLOPT_SLEEP_REPO`
+    fallback branch referenced upstream's `<repo>/plugins/run-sleep.sh`
+    layout; `scripts/run-sleep.sh`'s header comment and its
+    `CLAUDE_PLUGIN_ROOT` branch likewise assumed the upstream three-level
+    `<repo>/plugins/claude-code/` structure (`CLAUDE_PLUGIN_ROOT/../../
+    skillopt_sleep`). In this vendored copy `scripts/` and `skillopt_sleep/`
+    are siblings directly under the plugin root
+    (`engineering/skillopt-sleep/`), so `CLAUDE_PLUGIN_ROOT` (when Claude
+    Code sets it) points straight at a dir containing `skillopt_sleep/`, not
+    two levels above one. Both scripts' primary co-located/repo-relative
+    resolution branches happen to still succeed for this layout regardless
+    (so this was unreachable in normal operation), but the documented
+    `SKILLOPT_SLEEP_REPO` and `CLAUDE_PLUGIN_ROOT` escape hatches would have
+    silently failed to resolve for anyone actually relying on them — e.g.
+    after a future re-vendor that missed copying `run-sleep.sh` into
+    `scripts/`. Fixed: `sleep.sh`'s explicit-env branch now checks
+    `$SKILLOPT_SLEEP_REPO/scripts/run-sleep.sh`; `run-sleep.sh` now checks
+    `$CLAUDE_PLUGIN_ROOT/skillopt_sleep` (this repo's actual layout) ahead of
+    the upstream two-levels-up check (kept for portability if this script is
+    ever reused in that shape again). Verified both fixed branches resolve
+    correctly in isolation from the co-located fallback.
 
 ## What this plugin is
 
