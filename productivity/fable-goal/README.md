@@ -24,6 +24,10 @@ Get out of the model's way. A great /goal prompt nails the *what*, grants explic
 
 Or just ramble and say "turn this into a goal prompt."
 
+## Design notes
+
+Unlike sibling `productivity/*` plugins, this one intentionally ships no `agents/` persona and no `assets/`: the skill is a single reasoning pass with nothing to orchestrate in parallel, invoked via `/cs:fable-goal`, and its output is one prose block with no templates to fill. `scripts/goal_prompt_self_check.py` covers the mechanically checkable subset of the pre-delivery self-check (word count, goal line, autonomy directive, verification/freedom/destination language); deliverable concreteness and live-environment resource verification remain author judgment.
+
 ## Attribution
 
 Derived from [duncan-buildroom/freeskills](https://github.com/duncan-buildroom/freeskills) `fable-goal` ("free to use and modify. Made for builders."). This version is a substantial restructure: wrong-tool check, observable-done principle, verification-defaults-by-medium table, six-point pre-delivery self-check, failure-mode catalog, and a second worked example in a non-web medium.
